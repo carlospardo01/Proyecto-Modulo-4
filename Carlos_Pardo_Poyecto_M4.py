@@ -8,7 +8,7 @@ from PIL import Image  #Se usa para abrir y manejar imágenes
 from urllib.request import urlopen  #Se usa para abrir la URL de la imagen
 
 #Se pide al usuario que ingrese el nombre de un Pokémon
-pokemon = input("Escribe el nombre de un Pokémon: ")
+pokemon = input("Escribe el nombre de un Pokémon: ").strip()
 #Se complementa la URL de la API de PokeAPI para obtener los datos del Pokémon ingresado
 url = "https://pokeapi.co/api/v2/pokemon/" + pokemon
 #Se realiza solicitud GET a la API
@@ -40,29 +40,29 @@ else:
     #Se muestran los datos
     print("\n--- Información del Pokémon ---")
     print(f"Nombre: {nombre}")
-    print(f"Peso: {peso} kg")
-    print(f"Altura: {altura} dm")
+    print(f"Peso: {peso/10} kg")
+    print(f"Altura: {altura/10} mts")
     print(f"Tipos: {', '.join(tipos)}")
     print(f"Habilidades: {', '.join(habilidades)}")
     print(f"Movimientos: {', '.join(movimientos)}")
     print(f"Imagen: {url_imagen}")
     #Se abre la imagen desde la URL
     imagen = Image.open(urlopen(url_imagen))
-    # Mostramos la imagen del Pokémon con Matplotlib
-    plt.title("Información del Pokémon")  # Colocamos el nombre de la grafica
-    imgplot = plt.imshow(imagen)  # Mostramos la imagen con imshow()
-    plt.axis('off')  # Quitamos los ejes
+    #Se coloca el nombre de la grafica
+    plt.title("Información del Pokémon")
+    #Se muestra la imagen con imshow()
+    imgplot = plt.imshow(imagen)
+    #Se quitan los ejes
+    plt.axis('off')
     #Se agrupan los datos a mostrar en la gráfica
     info_text_grafica = (
     f"Nombre: {nombre}\n"
-    f"Peso: {peso} kg\n"
-    f"Altura: {altura} dm\n"
-    f"Tipos: {', '.join(tipos)}\n"
+    f"Peso: {peso/10} kg, Altura: {altura/10} mts, Tipos: {', '.join(tipos)}\n"
     f"Habilidades: {', '.join(habilidades)}\n"
     f"Movimientos: {', '.join(movimientos)}\n"
-    f"Imagen: {url_imagen}"
+    #f"Imagen: {url_imagen}"
     )
     # Posicionamos el texto en la parte inferior de la imagen
-    plt.text(45, 90, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='center')
+    plt.text(45, 95, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='center')
     #Se muestra todo en pantalla
     plt.show()
