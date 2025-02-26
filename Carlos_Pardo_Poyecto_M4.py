@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt  # Para mostrar la imagen del Pokémon
 from PIL import Image  #Se usa para abrir y manejar imágenes
 from urllib.request import urlopen  #Se usa para abrir la URL de la imagen
 
-#Se pide al usuario que ingrese el nombre de un Pokémon
+#Se pide al usuario que ingrese el nombre de un Pokémon y se borran los espacios en blanco
 pokemon = input("Escribe el nombre de un Pokémon: ").strip()
 #Se complementa la URL de la API de PokeAPI para obtener los datos del Pokémon ingresado
 url = "https://pokeapi.co/api/v2/pokemon/" + pokemon
