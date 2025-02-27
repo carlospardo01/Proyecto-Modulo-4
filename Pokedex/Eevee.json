@@ -1,0 +1,21 @@
+{
+    "nombre": "Eevee",
+    "peso": 65,
+    "altura": 3,
+    "tipos": [
+        "Normal"
+    ],
+    "habilidades": [
+        "Run-away",
+        "Adaptability",
+        "Anticipation"
+    ],
+    "movimientos": [
+        "Pay-day",
+        "Double-kick",
+        "Sand-attack",
+        "Headbutt",
+        "Tackle"
+    ],
+    "Imagen: ": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
+}
