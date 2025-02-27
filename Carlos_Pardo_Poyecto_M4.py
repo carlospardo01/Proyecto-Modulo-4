@@ -1,9 +1,9 @@
 #Importar librerías para hacer la petición, crear archivo json y crear la carpeta
 #En la terminal se debe colocar: pip install requests
-import requests
-import os
-import json
-import matplotlib.pyplot as plt  # Para mostrar la imagen del Pokémon
+import requests #Se usa requests para hacer la solicitud a la API
+import os #Se usa os para manejar archivos y directorios
+import json #Se usa json para guardar los datos en un archivo JSON
+import matplotlib.pyplot as plt  #Se usa matplotlib.pyplot para mostrar la imagen del Pokémon
 from PIL import Image  #Se usa para abrir y manejar imágenes
 from urllib.request import urlopen  #Se usa para abrir la URL de la imagen
 
@@ -18,8 +18,9 @@ if respuesta.status_code != 200:
     print("Pokémon no encontrado")
     exit()
 else:
+    #Se convierte la respuesta en un diccionario de Python
     datos_pokemon = respuesta.json()
-    #Se Obtiene la información deseada del pokemon
+    #Se Obtiene la información deseada del pokemon (Nombre, Peso y Altura)
     nombre = datos_pokemon["name"].capitalize()
     peso = datos_pokemon["weight"]
     altura = datos_pokemon["height"]
@@ -31,7 +32,7 @@ else:
     habilidades = []
     for habilidad in datos_pokemon["abilities"]:
         habilidades.append(habilidad["ability"]["name"].capitalize())
-    #Se usa for para recorrer la lista de movimientos, ademas se sa un if para limitar los recorridos a 5 y luego trar eso a una lista en blanco
+    #Se usa for para recorrer la lista de movimientos, ademas se usa un if para limitar los recorridos a 5 y luego trar eso a una lista en blanco
     movimientos = []
     contador_M = 0
     for movimiento in datos_pokemon["moves"]: 
@@ -45,11 +46,11 @@ else:
     #Se muestran los datos
     print("\n--- Información del Pokémon ---")
     print(f"Nombre: {nombre}")
-    print(f"Peso: {peso/10} kg")
-    print(f"Altura: {altura/10} mts")
-    print(f"Tipos: {', '.join(tipos)}")
-    print(f"Habilidades: {', '.join(habilidades)}")
-    print(f"Movimientos: {', '.join(movimientos)}")
+    print(f"Peso: {peso/10} kg") #Se divide en 10 para que de el dato exacto en la medida que es cuando se muestra al usuario
+    print(f"Altura: {altura/10} mts") #Se divide en 10 para que de el dato exacto en la medida que es cuando se muestra al usuario
+    print(f"Tipos: {', '.join(tipos)}") #Se usa join para unir los datos separandolos por coma
+    print(f"Habilidades: {', '.join(habilidades)}") #Se usa join para unir los datos separandolos por coma
+    print(f"Movimientos: {', '.join(movimientos)}") #Se usa join para unir los datos separandolos por coma
     print(f"Imagen: {url_imagen}")
     #Se abre la imagen desde la URL
     imagen = Image.open(urlopen(url_imagen))
@@ -62,10 +63,10 @@ else:
     #Se agrupan los datos a mostrar en la gráfica
     info_text_grafica = (
     f"Nombre: {nombre}\n"
-    f"Peso: {peso/10} kg, Altura: {altura/10} mts, Tipos: {', '.join(tipos)}\n"
-    f"Habilidades: {', '.join(habilidades)}\n"
-    f"Movimientos: {', '.join(movimientos)}\n"
-    #f"Imagen: {url_imagen}"
+    f"Peso: {peso/10} kg, Altura: {altura/10} mts, Tipos: {', '.join(tipos)}\n" #Se divide en 10 para que de el dato exacto en la medida que es cuando se muestra al usuario y se usa join para unir los datos separandolos por coma
+    f"Habilidades: {', '.join(habilidades)}\n" #Se usa join para unir los datos separandolos por coma
+    f"Movimientos: {', '.join(movimientos)}\n" #Se usa join para unir los datos separandolos por coma
+    f"Imagen: {url_imagen}"
     )
     # Posicionamos el texto en la parte inferior de la imagen
     plt.text(45, 95, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='center')
@@ -85,7 +86,7 @@ else:
     "Imagen: ": url_imagen
     }
     #Se guardan los archivos en un archivo JSON
-    archivo_guardar = f"pokedex/{nombre}.json"
+    archivo_guardar = f"Pokedex/{nombre}.json"
     #Se abre archivo en modo escritura ("w") y se usa "with open" para asegurar que el archivo se cierre correctamente después de usarlo
     with open(archivo_guardar, "w") as archivo:
         #Se guarda el diccionario, se convirte el archivo en formato JSON y se usa el parametro "indent=4" para darle espacio al archivo para que sea más facil de leer
