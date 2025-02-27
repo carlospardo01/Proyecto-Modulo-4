@@ -1,0 +1,16 @@
+{
+    "nombre": "Ditto",
+    "peso": 40,
+    "altura": 3,
+    "tipos": [
+        "Normal"
+    ],
+    "habilidades": [
+        "Limber",
+        "Imposter"
+    ],
+    "movimientos": [
+        "Transform"
+    ],
+    "Imagen: ": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+}
