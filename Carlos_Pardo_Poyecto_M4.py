@@ -1,8 +1,8 @@
 #Importar librerías para hacer la petición, crear archivo json y crear la carpeta
 #En la terminal se debe colocar: pip install requests
 import requests
-import json
 import os
+import json
 import matplotlib.pyplot as plt  # Para mostrar la imagen del Pokémon
 from PIL import Image  #Se usa para abrir y manejar imágenes
 from urllib.request import urlopen  #Se usa para abrir la URL de la imagen
@@ -31,10 +31,15 @@ else:
     habilidades = []
     for habilidad in datos_pokemon["abilities"]:
         habilidades.append(habilidad["ability"]["name"].capitalize())
-    #Se usa for para recorrer la lista de movimientos limitandolos a 5 y traerlos a una lista en blanco
+    #Se usa for para recorrer la lista de movimientos, ademas se sa un if para limitar los recorridos a 5 y luego trar eso a una lista en blanco
     movimientos = []
-    for movimiento in datos_pokemon["moves"][:5]:
-        movimientos.append(movimiento["move"]["name"].capitalize())
+    contador_M = 0
+    for movimiento in datos_pokemon["moves"]: 
+        if contador_M < 5:
+            movimientos.append(movimiento["move"]["name"].capitalize())
+            contador_M += 1
+        else:
+            break
     #Se obtiene la imagen
     url_imagen = datos_pokemon["sprites"]["front_default"]
     #Se muestran los datos
@@ -66,3 +71,22 @@ else:
     plt.text(45, 95, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='center')
     #Se muestra todo en pantalla
     plt.show()
+    # Crear la carpeta si no existe
+    if not os.path.exists("pokedex"):
+        os.mkdir("pokedex")
+    #Se estructuran los datos para guardarlos
+    datos_archivo_json = {
+    "nombre": nombre,
+    "peso": peso,
+    "altura": altura,
+    "tipos": tipos,
+    "habilidades": habilidades,
+    "movimientos": movimientos, 
+    "Imagen: ": url_imagen
+    }
+    #Se guardan los archivos en un archivo JSON
+    archivo_guardar = f"pokedex/{nombre}.json"
+    #Se escribe el archivo en el formatojson
+    with open(archivo_guardar, "w") as archivo:
+        json.dump(datos_archivo_json, archivo, indent=4)
+    print(f"\n¡Datos guardados en {archivo_guardar}!")
