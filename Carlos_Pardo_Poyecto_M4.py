@@ -72,8 +72,8 @@ else:
     #Se muestra todo en pantalla
     plt.show()
     # Crear la carpeta si no existe
-    if not os.path.exists("pokedex"):
-        os.mkdir("pokedex")
+    if not os.path.exists("Pokedex"):
+        os.mkdir("Pokedex")
     #Se estructuran los datos para guardarlos
     datos_archivo_json = {
     "nombre": nombre,
@@ -86,7 +86,9 @@ else:
     }
     #Se guardan los archivos en un archivo JSON
     archivo_guardar = f"pokedex/{nombre}.json"
-    #Se escribe el archivo en el formatojson
+    #Se abre archivo en modo escritura ("w") y se usa "with open" para asegurar que el archivo se cierre correctamente después de usarlo
     with open(archivo_guardar, "w") as archivo:
+        #Se guarda el diccionario, se convirte el archivo en formato JSON y se usa el parametro "indent=4" para darle espacio al archivo para que sea más facil de leer
         json.dump(datos_archivo_json, archivo, indent=4)
+    #Se imprime en pantalla que el archivo se gurdó
     print(f"\n¡Datos guardados en {archivo_guardar}!")
