@@ -85,8 +85,10 @@ else:
     "movimientos": movimientos, 
     "Imagen: ": url_imagen
     }
-    #Se guardan los archivos en un archivo JSON
-    archivo_guardar = f"Pokedex/{nombre}.json"
+    #Se obtiene la carpeta donde está el script
+    carpeta_actual = os.path.dirname(__file__)
+    #Se guardan los archivos en un archivo JSON y se usa la ubicación actual del archivo que se está ejecutando
+    archivo_guardar = os.path.join(carpeta_actual, f"Pokedex/{nombre}.json")
     #Se abre archivo en modo escritura ("w") y se usa "with open" para asegurar que el archivo se cierre correctamente después de usarlo
     with open(archivo_guardar, "w") as archivo:
         #Se guarda el diccionario, se convirte el archivo en formato JSON y se usa el parametro "indent=4" para darle espacio al archivo para que sea más facil de leer
