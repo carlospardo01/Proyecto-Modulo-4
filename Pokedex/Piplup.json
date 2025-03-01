@@ -1,0 +1,20 @@
+{
+    "nombre": "Piplup",
+    "peso": 52,
+    "altura": 4,
+    "tipos": [
+        "Water"
+    ],
+    "habilidades": [
+        "Torrent",
+        "Competitive"
+    ],
+    "movimientos": [
+        "Pound",
+        "Cut",
+        "Headbutt",
+        "Fury-attack",
+        "Tackle"
+    ],
+    "Imagen: ": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png"
+}
