@@ -76,7 +76,7 @@ else:
     f"Imagen: {url_imagen}"
     )
     #Se posicionamos el texto en la parte inferior de la imagen
-    plt.text(45, 65, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='top')
+    plt.text(45, 95, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='center')
     #Se muestra todo en pantalla
     plt.show()
     # Crear la carpeta si no existe
