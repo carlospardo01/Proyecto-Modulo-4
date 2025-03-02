@@ -13,6 +13,13 @@ pokemon = input("Escribe el nombre de un Pokémon: ").strip()
 url = "https://pokeapi.co/api/v2/pokemon/" + pokemon
 #Se realiza solicitud GET a la API
 respuesta = requests.get(url)
+#Se maneja el tiempo de espera (timeout)
+try:
+    #Se intenta hacer una solicitud GET con un tiempo de espera de 5 segundos
+    respuesta = requests.get(url, timeout=5)
+except requests.timeout:
+    #Si la solicitud tarda más de 5 segundos, se muestra un mensaje de error
+    print("Error: El tiempo de espera ha finalizado")
 #Se verifica si la solicitud fue exitosa (código de estado 200)
 if respuesta.status_code != 200:
     print("Pokémon no encontrado")
@@ -68,8 +75,8 @@ else:
     f"Movimientos: {', '.join(movimientos)}\n" #Se usa join para unir los datos separandolos por coma
     f"Imagen: {url_imagen}"
     )
-    # Posicionamos el texto en la parte inferior de la imagen
-    plt.text(45, 95, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='center')
+    #Se posicionamos el texto en la parte inferior de la imagen
+    plt.text(45, 65, info_text_grafica, fontsize=10, color='black',bbox=dict(facecolor='white', alpha=0), ha='center', va='top')
     #Se muestra todo en pantalla
     plt.show()
     # Crear la carpeta si no existe
@@ -88,7 +95,7 @@ else:
     #Se obtiene la carpeta donde está el script
     carpeta_actual = os.path.dirname(__file__)
     #Se guardan los archivos en un archivo JSON y se usa la ubicación actual del archivo que se está ejecutando
-    archivo_guardar = os.path.join(carpeta_actual, f"Pokedex/{nombre}.json")
+    archivo_guardar = os.path.join(carpeta_actual, f"Pokedex\{nombre}.json")
     #Se abre archivo en modo escritura ("w") y se usa "with open" para asegurar que el archivo se cierre correctamente después de usarlo
     with open(archivo_guardar, "w") as archivo:
         #Se guarda el diccionario, se convirte el archivo en formato JSON y se usa el parametro "indent=4" para darle espacio al archivo para que sea más facil de leer
