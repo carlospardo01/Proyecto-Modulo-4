@@ -15,4 +15,4 @@ El proyecto lo realice de la siguiente manera.
 13. Después de construir todo eso, seguí probando y ya todo lo veía normal. 
 14. Luego busque en internet los datos del pokemon consultado y noto que las medidas vienen diferentes por lo cual divido en 10 el peso y la altura para dejarlos en medidas normales que usamos en nuestro día a día, adicional a eso al ver tantos movimientos los condicioné a 5 para no tener tanta información que puede confundir a alguien.
 15. Luego de eso al cambiar de equipo noto que el guardado no me funcionaba, por lo que consulté y tocó añadirle una línea de código para que al cambiar de ubicación el archivo me genere la carpeta al lado y me guerde la información en un lugar visible.
-16. Tambien rectifiqué el codigo varias veces para ver que otros detalles se me habían pasado.
+16. Tambien rectifiqué el codigo varias veces para ver que otros detalles se me habían pasado pero no encontré algo que me hiceira seguir modificando el código.
